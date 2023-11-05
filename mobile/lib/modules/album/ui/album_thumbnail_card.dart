@@ -28,25 +28,35 @@ class AlbumThumbnailCard extends StatelessWidget {
         var cardSize = constraints.maxWidth;
 
         buildEmptyThumbnail() {
-          return Container(
+          return SizedBox(
             height: cardSize,
             width: cardSize,
-            decoration: BoxDecoration(
-              color: isDarkMode ? Colors.grey[800] : Colors.grey[200],
-            ),
-            child: Center(
-              child: Icon(
-                Icons.no_photography,
-                size: cardSize * .15,
+            child: Card(
+              elevation: 12.0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Center(
+                child: Icon(
+                  Icons.no_photography,
+                  size: cardSize * .15,
+                ),
               ),
             ),
           );
         }
 
-        buildAlbumThumbnail() => ImmichImage(
-              album.thumbnail.value,
-              width: cardSize,
-              height: cardSize,
+        buildAlbumThumbnail() => Card(
+              elevation: 12.0,
+              clipBehavior: Clip.hardEdge,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: ImmichImage(
+                album.thumbnail.value,
+                width: cardSize,
+                height: cardSize,
+              ),
             );
 
         buildAlbumTextRow() {
